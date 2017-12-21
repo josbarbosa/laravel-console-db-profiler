@@ -1,0 +1,23 @@
+version: "2"
+checks:
+  argument-count:
+    config:
+      threshold: 4
+  method-complexity:
+    config:
+      threshold: 8
+  method-lines:
+      config:
+        threshold: 30
+plugins:
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "PSR1,PSR2"
+  sonar-php:
+    enabled: true
+  phpmd:
+    enabled: true
+    checks:
+      CleanCode/StaticAccess:
+        enabled: false
