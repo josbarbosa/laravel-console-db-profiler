@@ -31,7 +31,7 @@ class HintTest extends TestCase
     }
 
     /** @test */
-    function it_collects_hints(): void
+    function it_collects_hints()
     {
         foreach ($this->queries as $query) {
             $this->assertHints($query);
@@ -39,7 +39,7 @@ class HintTest extends TestCase
     }
 
     /** @test */
-    function it_tests_missing_where_clause(): void
+    function it_tests_missing_where_clause()
     {
         $expression = $this->hints->getRegularExpressions()['where_clause_not_exists'];
 
@@ -62,7 +62,7 @@ class HintTest extends TestCase
     }
 
     /** @test */
-    function it_tests_if_the_correct_operator_is_present(): void
+    function it_tests_if_the_correct_operator_is_present()
     {
         $expression = $this->hints->getRegularExpressions()['wrong_not_equal_operator_exists'];
 
@@ -76,7 +76,7 @@ class HintTest extends TestCase
     }
 
     /** @test */
-    function it_tests_if_a_select_asterisk_is_present(): void
+    function it_tests_if_a_select_asterisk_is_present()
     {
         $expression = $this->hints->getRegularExpressions()['select_has_an_asterisk'];
 
@@ -91,7 +91,7 @@ class HintTest extends TestCase
     }
 
     /** @test */
-    function it_tests_if_a_order_rand_is_present(): void
+    function it_tests_if_a_order_rand_is_present()
     {
         $expression = $this->hints->getRegularExpressions()['order_by_random'];
 
@@ -104,7 +104,7 @@ class HintTest extends TestCase
     }
 
     /** @test */
-    function it_tests_if_order_by_is_missing_in_a_select_with_a_limit(): void
+    function it_tests_if_order_by_is_missing_in_a_select_with_a_limit()
     {
         $expression = $this->hints->getRegularExpressions()['limit_without_order_by'];
 
@@ -162,7 +162,7 @@ class HintTest extends TestCase
     /**
      * @param string $sql
      */
-    function assertHints(string $sql): void
+    function assertHints(string $sql)
     {
         $hintCollect = new Hint();
         $hintCollect->collect($sql);

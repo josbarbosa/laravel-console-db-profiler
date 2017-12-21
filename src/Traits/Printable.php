@@ -151,7 +151,7 @@ trait Printable
     /**
      * @param string $str
      */
-    public function line(string $str = ''): void
+    public function line(string $str = '')
     {
         app()->make(ConsoleOutput::class)->writeln($str);
     }
@@ -181,7 +181,7 @@ trait Printable
      * @param array $rows
      * @internal param ConsoleOutput $output
      */
-    public function buildTable(array $headers, array $rows): void
+    public function buildTable(array $headers, array $rows)
     {
         if (empty($rows)) {
             return;

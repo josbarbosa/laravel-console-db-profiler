@@ -14,14 +14,14 @@ class PrintableTest extends TestCase
     use Printable;
 
     /** @test */
-    function it_returns_the_terminal_size_width(): void
+    function it_returns_the_terminal_size_width()
     {
         putenv('COLUMNS=100');
         $this->assertEquals(100, $this->getTerminalWidthSize());
     }
 
     /** @test */
-    function it_wraps_text_in_a_console_column_table(): void
+    function it_wraps_text_in_a_console_column_table()
     {
         /** Window Offset is 30 */
         putenv('COLUMNS=40');
@@ -30,7 +30,7 @@ class PrintableTest extends TestCase
     }
 
     /** @test */
-    function it_colors_text(): void
+    function it_colors_text()
     {
         $text = 'a';
         $color = $this->colorOk;
@@ -52,7 +52,7 @@ class PrintableTest extends TestCase
     }
 
     /** @test */
-    function it_styles_text(): void
+    function it_styles_text()
     {
         $methods = [
             'info'      => $this->tagInfo,
@@ -70,7 +70,7 @@ class PrintableTest extends TestCase
     }
 
     /** @test */
-    function it_returns_a_table_cell(): void
+    function it_returns_a_table_cell()
     {
         $this->assertInstanceOf(TableCell::class, $this->tableCell('a', 20, 20));
         $this->assertInstanceOf(TableCell::class, $this->tableCell('a', 20));
@@ -78,7 +78,7 @@ class PrintableTest extends TestCase
     }
 
     /** @test */
-    function it_returns_a_table_separator(): void
+    function it_returns_a_table_separator()
     {
         /** returns an empty array */
         $this->assertEmpty($this->tableSeparator(false));

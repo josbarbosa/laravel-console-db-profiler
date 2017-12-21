@@ -23,7 +23,7 @@ class Hint extends Collector
     /**
      * @param string $sql
      */
-    public function collect($sql): void
+    public function collect($sql)
     {
         foreach ($this->queryAnalysis($sql) as $hint) {
             if (!$this->collection()->contains($hint)) {

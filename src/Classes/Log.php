@@ -32,7 +32,7 @@ class Log
     /**
      * @param string $title
      */
-    public function header(string $title): void
+    public function header(string $title)
     {
         $multiplier = 60;
         $separator = str_repeat('-', $multiplier);
@@ -45,7 +45,7 @@ class Log
      * @param string $message
      * @param array $context
      */
-    public function write(string $message, array $context = []): void
+    public function write(string $message, array $context = [])
     {
         $this->logger->log($this->level, $message, $context);
     }

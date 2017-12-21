@@ -20,7 +20,7 @@ class ConsoleDbProfilerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(): void
+    public function boot()
     {
         $this->publishes([h::configPath() => config_path('console-db-profiler.php')], 'config');
 
@@ -41,7 +41,7 @@ class ConsoleDbProfilerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register(): void
+    public function register()
     {
         $this->mergeConfigFrom(h::configPath(), 'console-db-profiler');
 

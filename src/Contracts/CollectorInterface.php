@@ -11,7 +11,7 @@ interface CollectorInterface
     /**
      * @param $item
      */
-    public function collect($item): void;
+    public function collect($item);
 
     /**
      * @return Collection

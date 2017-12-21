@@ -20,13 +20,13 @@ class CollectorTest extends TestCase
     }
 
     /** @test */
-    function its_empty(): void
+    function its_empty()
     {
         $this->assertFalse($this->collector->hasItems());
     }
 
     /** @test */
-    function it_has_items(): void
+    function it_has_items()
     {
         $this->collector->collect("test");
         $this->assertTrue($this->collector->hasItems());
@@ -34,7 +34,7 @@ class CollectorTest extends TestCase
     }
 
     /** @test */
-    function it_returns_a_collection(): void
+    function it_returns_a_collection()
     {
         $this->collector->collect("test");
         $this->assertInstanceOf(Collection::class, $this->collector->collection());

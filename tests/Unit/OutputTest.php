@@ -39,7 +39,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function it_tests_the_concrete_method_of_the_output_table_abstract_class(): void
+    function it_tests_the_concrete_method_of_the_output_table_abstract_class()
     {
         $mock = m::mock(OutputTable::class, [$this->profiles])->shouldAllowMockingProtectedMethods();
         $mock->shouldReceive('rows')->once()->withNoArgs()->andReturn(['row']);
@@ -49,7 +49,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_ready_to_output_hints_to_the_console(): void
+    function its_ready_to_output_hints_to_the_console()
     {
         $rowsOutput = [
             [
@@ -70,7 +70,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_ready_to_output_a_limit_message_to_the_console(): void
+    function its_ready_to_output_a_limit_message_to_the_console()
     {
         $totalRows = 10;
         $limitRows = 5;
@@ -91,7 +91,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_not_ready_to_output_a_message_limit_to_the_console(): void
+    function its_not_ready_to_output_a_message_limit_to_the_console()
     {
         $totalRows = 10;
         $limitRows = 50;
@@ -102,7 +102,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_ready_to_output_profiles_to_the_console(): void
+    function its_ready_to_output_profiles_to_the_console()
     {
         $rowsOutput = [
             [],
@@ -135,7 +135,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_ready_to_output_profiles_with_warnings_to_the_console(): void
+    function its_ready_to_output_profiles_with_warnings_to_the_console()
     {
         $slowQuery = 30.5;
         /** Test all methods with warnings */
@@ -163,7 +163,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_ready_to_output_typologies_to_the_console(): void
+    function its_ready_to_output_typologies_to_the_console()
     {
         $rowsOutput = [
             'select' => [
@@ -192,7 +192,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_ready_to_output_totals_to_the_console(): void
+    function its_ready_to_output_totals_to_the_console()
     {
         $profiles = $this->profiles;
         $profiles->collect($this->query());
@@ -216,7 +216,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function it_tests_the_total_queries_time(): void
+    function it_tests_the_total_queries_time()
     {
         $profiles = $this->profiles;
         $totalTime = $profiles->getTotalTime();
@@ -240,7 +240,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function it_tests_duplicate_queries(): void
+    function it_tests_duplicate_queries()
     {
         $profiles = $this->profiles;
         $profiles->collect($this->query());
@@ -265,7 +265,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function its_ready_to_output_queries_total_time_with_the_threshold_limit_exceeded_to_the_console(): void
+    function its_ready_to_output_queries_total_time_with_the_threshold_limit_exceeded_to_the_console()
     {
         h::setConfig('threshold.total_queries', -1);
         $profiles = $this->profiles;
@@ -283,7 +283,7 @@ class OutputTest extends TestCase
     }
 
     /** @test */
-    function it_tests_thresholds(): void
+    function it_tests_thresholds()
     {
         $totalTime = $this->profiles->getTotalTime();
         $outputTotalsTable = new OutputTotalsTable($this->profiles);
@@ -296,7 +296,7 @@ class OutputTest extends TestCase
         $this->assertEquals($this->textColorError($totalTime), $outputTotalsTable->coloredThreshold());
     }
 
-    protected function stub(): void
+    protected function stub()
     {
         $sql = (new ConsoleDbProfiler($this->app))->applyBindings($this->defaultSql . ' where name=?', ['new']);
         $this->profiles = new Profile();

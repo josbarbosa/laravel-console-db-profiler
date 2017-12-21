@@ -28,7 +28,7 @@ abstract class OutputTable
     /**
      * Handle the table output
      */
-    final public function handle(): void
+    final public function handle()
     {
         $this->buildTable($this->headers(), $this->rows());
     }

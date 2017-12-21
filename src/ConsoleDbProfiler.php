@@ -38,7 +38,7 @@ class ConsoleDbProfiler
         $this->app = $app;
     }
 
-    public function boot(): void
+    public function boot()
     {
         /** @var Profile $profiles */
         $profiles = $this->app->make(Profile::class);
@@ -106,7 +106,7 @@ class ConsoleDbProfiler
      * @param Query $query
      * @param Profile $profiles
      */
-    protected function log(Query $query, Profile $profiles): void
+    protected function log(Query $query, Profile $profiles)
     {
         /** @var Log $log */
         $log = $this->app->make(Log::class);

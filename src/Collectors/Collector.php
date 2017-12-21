@@ -25,7 +25,7 @@ class Collector implements CollectorInterface
     /**
      * @param $item
      */
-    public function collect($item): void
+    public function collect($item)
     {
         $this->collector->push($item);
     }

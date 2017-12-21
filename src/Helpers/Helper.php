@@ -26,7 +26,7 @@ class Helper
      * @param string $key
      * @param $value
      */
-    public static function setConfig(string $key, $value): void
+    public static function setConfig(string $key, $value)
     {
         Config::set('console-db-profiler.' . $key, $value);
     }

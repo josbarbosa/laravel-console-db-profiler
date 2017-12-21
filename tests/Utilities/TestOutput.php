@@ -17,7 +17,7 @@ class TestOutput extends Output
      * @param string $message
      * @param bool $newline
      */
-    protected function doWrite($message, $newline): void
+    protected function doWrite($message, $newline)
     {
         $this->output .= $message . ($newline ? "\n" : '');
     }

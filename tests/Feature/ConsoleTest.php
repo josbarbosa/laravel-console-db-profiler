@@ -19,7 +19,7 @@ class ConsoleTest extends TestCaseConsole
     use RefreshDatabase;
 
     /** @test */
-    function it_builds_the_console_db_profiling_with_all_configs_disabled(): void
+    function it_builds_the_console_db_profiling_with_all_configs_disabled()
     {
         /** set the env where the test will run */
         $this->setEnv('local')
@@ -58,7 +58,7 @@ TABLE;
     }
 
     /** @test */
-    function it_builds_the_console_db_profiling_with_all_configs_enabled(): void
+    function it_builds_the_console_db_profiling_with_all_configs_enabled()
     {
         $this->setEnv('local')
             ->setConfig('hints', true)
@@ -97,7 +97,7 @@ TABLE;
     }
 
     /** @test */
-    function it_not_runs_from_console(): void
+    function it_not_runs_from_console()
     {
         $this->setEnv('local')->runningInConsole(false)->boot();
 
@@ -105,7 +105,7 @@ TABLE;
     }
 
     /** @test */
-    function it_disable_profiler(): void
+    function it_disable_profiler()
     {
         h::setConfig('enabled', false);
         $this->setEnv('local')->boot();
@@ -114,7 +114,7 @@ TABLE;
     }
 
     /** @test */
-    function it_enable_profiler_using_debug_mode_option_vvv(): void
+    function it_enable_profiler_using_debug_mode_option_vvv()
     {
         array_push($_SERVER['argv'], '-vvv');
 
@@ -127,7 +127,7 @@ TABLE;
     }
 
     /** @test */
-    function it_enable_profiler_for_an_environment_that_its_not_local(): void
+    function it_enable_profiler_for_an_environment_that_its_not_local()
     {
         h::setConfig('environment.production', true);
         $this->setEnv('production')->boot();
@@ -136,7 +136,7 @@ TABLE;
     }
 
     /** @test */
-    function it_tests_a_query_with_a_carbon_date(): void
+    function it_tests_a_query_with_a_carbon_date()
     {
         $this->setEnv('local')->boot();
 
@@ -154,7 +154,7 @@ TABLE;
     }
 
     /** @test */
-    function it_tests_an_artisan_command(): void
+    function it_tests_an_artisan_command()
     {
         $this->setEnv('local')->boot();
 
@@ -166,7 +166,7 @@ TABLE;
     }
 
     /** @test */
-    function it_tests_multiple_command_calls(): void
+    function it_tests_multiple_command_calls()
     {
         $this->setEnv('local')->boot();
 

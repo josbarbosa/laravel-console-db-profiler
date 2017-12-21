@@ -22,7 +22,7 @@ class Profile extends Collector
     /**
      * @param Query $query
      */
-    public function collect($query): void
+    public function collect($query)
     {
         if (h::getConfig('total')) {
             $this->addTime($query->getTime());
@@ -39,7 +39,7 @@ class Profile extends Collector
     /**
      * @param float $time
      */
-    protected function addTime(float $time): void
+    protected function addTime(float $time)
     {
         $this->totalTime += $time;
     }
@@ -63,7 +63,7 @@ class Profile extends Collector
     /**
      * Increment Total Duplicates
      */
-    protected function incrementTotalDuplicates(): void
+    protected function incrementTotalDuplicates()
     {
         $this->totalDuplicates += 1;
     }

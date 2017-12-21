@@ -27,7 +27,7 @@ class LogFileTest extends TestCaseConsole
     }
 
     /** @test */
-    function it_enables_query_log(): void
+    function it_enables_query_log()
     {
         $this->setConfig('log.enabled', true)->boot();
 
@@ -37,7 +37,7 @@ class LogFileTest extends TestCaseConsole
     }
 
     /** @test */
-    function it_disables_query_log(): void
+    function it_disables_query_log()
     {
         $this->setConfig('log.enabled', false)->boot();
 
@@ -47,7 +47,7 @@ class LogFileTest extends TestCaseConsole
     }
 
     /** @test */
-    function it_saves_the_log_file_in_a_new_path_location(): void
+    function it_saves_the_log_file_in_a_new_path_location()
     {
         $newPath = storage_path('app/query.log');
 
@@ -61,7 +61,7 @@ class LogFileTest extends TestCaseConsole
     }
 
     /** @test */
-    function it_appends_queries_to_the_log_file(): void
+    function it_appends_queries_to_the_log_file()
     {
         $this->setConfig('log.enabled', true)->boot();
 
@@ -80,7 +80,7 @@ class LogFileTest extends TestCaseConsole
     }
 
     /** @test */
-    function it_deletes_the_log_file_on_every_execution(): void
+    function it_deletes_the_log_file_on_every_execution()
     {
         $this->setConfig('log.options.append', false)->setConfig('log.enabled', true)->boot();
 

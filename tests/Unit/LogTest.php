@@ -14,7 +14,7 @@ use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
 class LogTest extends TestCase
 {
     /** @test */
-    function can_manage_a_query_log_file(): void
+    function can_manage_a_query_log_file()
     {
         $path = h::getConfig('log.options.path');
         $logger = new Logger('profiler_log');

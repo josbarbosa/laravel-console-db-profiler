@@ -19,14 +19,14 @@ class TypologyTest extends TestCase
     }
 
     /** @test */
-    function it_collects_typologies(): void
+    function it_collects_typologies()
     {
         $this->typology->collect($this->defaultSql);
         $this->assertEquals(['typology' => 'select'], $this->typology->collection()->first());
     }
 
     /** @test */
-    function it_counts_typologies(): void
+    function it_counts_typologies()
     {
         $this->addTypologies($this->defaultSql);
         $number = 2;
@@ -38,7 +38,7 @@ class TypologyTest extends TestCase
      * @param string $sql
      * @param int $number
      */
-    function addTypologies(string $sql, int $number = 1): void
+    function addTypologies(string $sql, int $number = 1)
     {
         for ($i = 1; $i <= $number; $i++) {
             $this->typology->collect($sql);

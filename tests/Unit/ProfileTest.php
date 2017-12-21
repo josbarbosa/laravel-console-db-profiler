@@ -22,7 +22,7 @@ class ProfileTest extends TestCase
     /**
      * Override parent setUp method
      */
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
         $this->profile = new Profile();
@@ -31,7 +31,7 @@ class ProfileTest extends TestCase
     }
 
     /** @test */
-    function it_collects_queries(): void
+    function it_collects_queries()
     {
         $this->assertEquals(0, $this->profile->getTotalDuplicates());
         $this->assertEquals(1, $this->profile->getTotalQueries());
@@ -39,7 +39,7 @@ class ProfileTest extends TestCase
     }
 
     /** @test */
-    function it_collects_duplicate_queries(): void
+    function it_collects_duplicate_queries()
     {
         $this->collectsQuery(1);
         $this->assertEquals(1, $this->profile->getTotalDuplicates());
@@ -51,7 +51,7 @@ class ProfileTest extends TestCase
      * @param int $number
      * @param Query|null $query
      */
-    function collectsQuery(int $number, Query $query = null): void
+    function collectsQuery(int $number, Query $query = null)
     {
         for ($i = 1; $i <= $number; $i++) {
             $this->profile->collect(($query ?? $this->query));

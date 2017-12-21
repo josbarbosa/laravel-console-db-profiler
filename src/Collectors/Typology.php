@@ -11,7 +11,7 @@ class Typology extends Collector
     /**
      * @param string $sql
      */
-    public function collect($sql): void
+    public function collect($sql)
     {
         $removedRoundBrackets = str_replace('(', '', $sql);
         /**

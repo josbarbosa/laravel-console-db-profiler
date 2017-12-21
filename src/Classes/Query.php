@@ -52,7 +52,7 @@ class Query
     /**
      * @param string $sql
      */
-    public function setSql(string $sql): void
+    public function setSql(string $sql)
     {
         $this->sql = $sql;
     }
@@ -68,7 +68,7 @@ class Query
     /**
      * @param float $time
      */
-    public function setTime(float $time): void
+    public function setTime(float $time)
     {
         $this->time = $time;
     }
@@ -84,7 +84,7 @@ class Query
     /**
      * @param bool $isDuplicate
      */
-    public function setIsDuplicate(bool $isDuplicate): void
+    public function setIsDuplicate(bool $isDuplicate)
     {
         $this->isDuplicate = $isDuplicate;
     }
@@ -100,7 +100,7 @@ class Query
     /**
      * @param string $connectionName
      */
-    public function setConnectionName(string $connectionName): void
+    public function setConnectionName(string $connectionName)
     {
         $this->connectionName = $connectionName;
     }

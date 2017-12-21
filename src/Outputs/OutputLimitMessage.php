@@ -30,7 +30,7 @@ class OutputLimitMessage
         $this->limitRows = $limitRows;
     }
 
-    public function handle(): void
+    public function handle()
     {
         if ($this->totalRows > $this->limitRows) {
             $this->line('');
