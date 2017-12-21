@@ -32,6 +32,7 @@ class TestCaseConsole extends TestCase
     {
         parent::setUp();
 
+        /** Change console window width to a reasonable size */
         putenv('COLUMNS=1000');
         $this->output = new TestOutput();
         app()->instance(ConsoleOutput::class, $this->output);
