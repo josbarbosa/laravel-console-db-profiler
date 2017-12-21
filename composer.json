@@ -20,8 +20,6 @@
           "tests/Commands/Command01.php",
           "tests/Commands/Command02.php",
           "tests/Database/Test.php",
-          "tests/Utilities/MethodsBag.php",
-          "tests/Utilities/MockOutput.php",
           "tests/Utilities/TestOutput.php"
       ]
     },
@@ -42,6 +40,7 @@
         "phpunit/phpunit": "^6.0",
         "mockery/mockery": "~1.0",
         "orchestra/testbench": "~3.0",
-        "orchestra/database": "~3.5"
+        "orchestra/database": "~3.5",
+        "codeclimate/php-test-reporter": "^0.3.0@dev"
     }
 }
