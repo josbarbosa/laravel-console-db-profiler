@@ -87,7 +87,7 @@ return [
     'log'         => [
         'enabled' => false,
         'options' => [
-            'append' => true,
+            'append' => false,
             'path'   => storage_path('logs/query.log'),
         ],
     ],

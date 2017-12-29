@@ -1,4 +1,4 @@
-<?php namespace PackageTests;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests;
 
 use Illuminate\Console\Events\ArtisanStarting;
 use Illuminate\Support\Facades\Event;
@@ -6,9 +6,9 @@ use JosBarbosa\ConsoleDbProfiler\Classes\Query;
 use JosBarbosa\ConsoleDbProfiler\ConsoleDbProfilerServiceProvider;
 use Orchestra\Database\ConsoleServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use PackageTests\Commands\Command01;
-use PackageTests\Commands\Command02;
-use PackageTests\Database\Test;
+use JosBarbosa\ConsoleDbProfiler\Tests\Commands\Command01;
+use JosBarbosa\ConsoleDbProfiler\Tests\Commands\Command02;
+use JosBarbosa\ConsoleDbProfiler\Tests\Database\Test;
 
 /**
  * Class TestCase

@@ -1,7 +1,7 @@
-<?php namespace PackageTests\Unit;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Unit;
 
 use JosBarbosa\ConsoleDbProfiler\Collectors\Typology;
-use PackageTests\TestCase;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCase;
 
 /**
  * Class TypologyTest

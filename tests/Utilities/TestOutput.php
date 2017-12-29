@@ -1,4 +1,4 @@
-<?php namespace PackageTests\Utilities;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Utilities;
 
 use Symfony\Component\Console\Output\Output;
 

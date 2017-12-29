@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use PackageTests\Database\Test;
+use JosBarbosa\ConsoleDbProfiler\Tests\Database\Test;
 /*
 |--------------------------------------------------------------------------
 | Test Factory

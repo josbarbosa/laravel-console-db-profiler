@@ -1,3 +1,3 @@
-# Database Profiler for the command line
+# Database profiler for the command line
 
 Under Development.
