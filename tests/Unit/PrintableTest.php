@@ -1,7 +1,7 @@
-<?php namespace PackageTests\Unit;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Unit;
 
 use JosBarbosa\ConsoleDbProfiler\Traits\Printable;
-use PackageTests\TestCase;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCase;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableSeparator;
 

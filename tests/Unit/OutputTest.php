@@ -1,4 +1,4 @@
-<?php namespace PackageTests\Unit;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Unit;
 
 use JosBarbosa\ConsoleDbProfiler\Collectors\Hint;
 use JosBarbosa\ConsoleDbProfiler\Collectors\Profile;
@@ -11,7 +11,7 @@ use JosBarbosa\ConsoleDbProfiler\Outputs\OutputTypologiesTable;
 use JosBarbosa\ConsoleDbProfiler\Outputs\OutputTotalsTable;
 use JosBarbosa\ConsoleDbProfiler\ConsoleDbProfiler;
 use JosBarbosa\ConsoleDbProfiler\Traits\Printable;
-use PackageTests\TestCase;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCase;
 use Symfony\Component\Console\Helper\TableSeparator;
 use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
 use Mockery as m;
@@ -45,6 +45,7 @@ class OutputTest extends TestCase
         $mock->shouldReceive('rows')->once()->withNoArgs()->andReturn(['row']);
         $mock->shouldReceive('headers')->once()->withNoArgs()->andReturn(['header']);
         $mock->shouldReceive('buildTable')->once()->withArgs([['header'], ['row']]);
+        $mock->shouldReceive('handle')->once()->withNoArgs()->passthru();
         $mock->handle();
     }
 

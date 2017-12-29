@@ -1,7 +1,7 @@
-<?php namespace PackageTests\Unit;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Unit;
 
 use JosBarbosa\ConsoleDbProfiler\Classes\Query;
-use PackageTests\TestCase;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCase;
 
 /**
  * Class QueryTest

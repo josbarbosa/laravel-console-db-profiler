@@ -33,6 +33,7 @@ class OutputTotalsTable extends OutputTable
         /** @var Profile $profiles */
         $profiles = $this->collector;
         $totalDuplicates = $profiles->getTotalDuplicates();
+
         if ($totalDuplicates) {
             $colDuplicates = $this->textColorError($totalDuplicates);
             $strPlural = str_plural(h::trans('duplicate'), $totalDuplicates);
@@ -52,11 +53,14 @@ class OutputTotalsTable extends OutputTable
         /** @var Profile $profiles */
         $profiles = $this->collector;
         $totalTime = $profiles->getTotalTime();
+
         if ($totalTime) {
             $colThreshold = $this->coloredThreshold();
             $colThresholdTitle = h::trans('total_time');
+
             return [$colThreshold, $colThresholdTitle];
         }
+
         return [];
     }
 
@@ -69,6 +73,7 @@ class OutputTotalsTable extends OutputTable
         $profiles = $this->collector;
         $totalTime = $profiles->getTotalTime();
         $threshold = h::getConfig('threshold.total_queries');
+
         return ($totalTime > $threshold) ? $this->textColorError($totalTime) : $this->textColorOk($totalTime);
     }
 }

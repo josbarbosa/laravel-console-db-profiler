@@ -1,11 +1,11 @@
-<?php namespace PackageTests\Feature;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Feature;
 
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
-use PackageTests\Database\Test;
-use PackageTests\TestCaseConsole;
+use JosBarbosa\ConsoleDbProfiler\Tests\Database\Test;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCaseConsole;
 
 /**
  * Class LogFileTest
@@ -63,17 +63,17 @@ class LogFileTest extends TestCaseConsole
     /** @test */
     function it_appends_queries_to_the_log_file()
     {
-        $this->setConfig('log.enabled', true)->boot();
+        $this->setConfig('log.enabled', true)->setConfig('log.options.append', false)->boot();
 
         Test::count();
 
         DB::getEventDispatcher()->forget(QueryExecuted::class);
 
-        $this->setConfig('log.options.append', true)->boot();
+        $this->setConfig('log.enabled', true)->setConfig('log.options.append', true)->boot();
 
         Test::all();
 
-        $fileContent = file_get_contents($this->path);
+        $fileContent = File::get($this->path);
 
         $this->assertContains('select count(*) as aggregate from "tests"', $fileContent);
         $this->assertContains($this->defaultSql, $fileContent);
@@ -92,7 +92,7 @@ class LogFileTest extends TestCaseConsole
 
         Test::all();
 
-        $fileContent = file_get_contents($this->path);
+        $fileContent = File::get($this->path);
 
         $this->assertNotContains('select count(*) as aggregate from "tests"', $fileContent);
         $this->assertContains($this->defaultSql, $fileContent);

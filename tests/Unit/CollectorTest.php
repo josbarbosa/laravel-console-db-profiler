@@ -1,8 +1,8 @@
-<?php namespace PackageTests\Unit;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Unit;
 
 use Illuminate\Support\Collection;
 use JosBarbosa\ConsoleDbProfiler\Collectors\Collector;
-use PackageTests\TestCase;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCase;
 
 /**
  * Class CollectorTest
@@ -17,20 +17,6 @@ class CollectorTest extends TestCase
     {
         parent::setUp();
         $this->collector = new Collector();
-    }
-
-    /** @test */
-    function its_empty()
-    {
-        $this->assertFalse($this->collector->hasItems());
-    }
-
-    /** @test */
-    function it_has_items()
-    {
-        $this->collector->collect("test");
-        $this->assertTrue($this->collector->hasItems());
-
     }
 
     /** @test */

@@ -1,10 +1,7 @@
-<?php namespace PackageTests\Unit;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Unit;
 
 use JosBarbosa\ConsoleDbProfiler\Classes\Log;
-use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
-use PackageTests\TestCase;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCase;
 use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
 
 /**
@@ -17,21 +14,15 @@ class LogTest extends TestCase
     function can_manage_a_query_log_file()
     {
         $path = h::getConfig('log.options.path');
-        $logger = new Logger('profiler_log');
-        $lineFormatter = (new LineFormatter("%message% %context% %extra%\n", null, true, true));
-        $streamHandler = (new StreamHandler($path))->setFormatter($lineFormatter);
-        $logger->pushHandler($streamHandler);
 
-        $queryLog = new Log(
-            $logger,
-            Logger::DEBUG
-        );
+        $log = new Log($path);
 
-        $queryLog->header('Test');
+        $log->header('Test');
 
-        $queryLog->write('aaa');
+        $log->log('aaa');
 
         $this->assertFileExists($path);
+        $this->assertTrue($log->exists());
 
         $fileContent = file_get_contents($path);
 

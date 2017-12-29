@@ -32,11 +32,14 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0",
-        "illuminate/support": "5.5.*",
-        "illuminate/database": "5.5.*"
+        "php": ">=7.0.0",
+        "illuminate/filesystem": "5.4.* || 5.5.*",
+        "illuminate/console": "5.4.* || 5.5.*",
+        "illuminate/support": "5.4.* || 5.5.*",
+        "illuminate/database": "5.4.* || 5.5.*"
     },
     "require-dev": {
+        "fzaninotto/faker": "~1.4",
         "phpunit/phpunit": "^6.0",
         "mockery/mockery": "~1.0",
         "orchestra/testbench": "~3.0",

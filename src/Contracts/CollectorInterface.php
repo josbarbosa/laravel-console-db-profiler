@@ -17,9 +17,4 @@ interface CollectorInterface
      * @return Collection
      */
     public function collection(): Collection;
-
-    /**
-     * @return bool
-     */
-    public function hasItems(): bool;
 }

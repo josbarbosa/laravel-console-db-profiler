@@ -1,6 +1,7 @@
 <?php namespace JosBarbosa\ConsoleDbProfiler\Outputs;
 
 use JosBarbosa\ConsoleDbProfiler\Classes\Query;
+use JosBarbosa\ConsoleDbProfiler\Collectors\Profile;
 use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
 
 /**
@@ -9,6 +10,14 @@ use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
  */
 class OutputProfileTable extends OutputTable
 {
+    public function handle()
+    {
+        parent::handle();
+        /** @var Profile $profiles */
+        $profiles = $this->collector;
+        (new OutputLimitMessage($profiles->getTotalQueries(), h::getConfig('limit')))->handle();
+    }
+
     /**
      * @return array
      */
@@ -18,6 +27,7 @@ class OutputProfileTable extends OutputTable
         $colProfileTitle = $this->tableCell($profileTitleText, 2);
         $colTimeTitle = $this->textColorHighlight(h::trans('time'));
         $colSqlTitle = $this->textColorHighlight(h::trans('query'));
+
         return [[$colProfileTitle], [$colTimeTitle, $colSqlTitle]];
     }
 
@@ -28,9 +38,11 @@ class OutputProfileTable extends OutputTable
     {
         $rows = [];
         $limit = h::getConfig('limit');
+
         $this->collector->collection()->take($limit)->map(function (Query $query, int $i) use (&$rows) {
             $time = $query->getTime();
             $timeColumn = $this->textColorOk($time);
+
             if ($time >= h::getConfig('threshold.slow_query')) {
                 $timeColumn = $this->error($time);
             }

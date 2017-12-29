@@ -4,14 +4,12 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Application;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\File;
-use JosBarbosa\ConsoleDbProfiler\Collectors\Hint;
 use JosBarbosa\ConsoleDbProfiler\Classes\Log;
+use JosBarbosa\ConsoleDbProfiler\Collectors\Hint;
 use JosBarbosa\ConsoleDbProfiler\Collectors\Profile;
 use JosBarbosa\ConsoleDbProfiler\Classes\Query;
 use JosBarbosa\ConsoleDbProfiler\Collectors\Typology;
 use JosBarbosa\ConsoleDbProfiler\Outputs\OutputHintsTable;
-use JosBarbosa\ConsoleDbProfiler\Outputs\OutputLimitMessage;
 use JosBarbosa\ConsoleDbProfiler\Outputs\OutputProfileTable;
 use JosBarbosa\ConsoleDbProfiler\Outputs\OutputTotalsTable;
 use JosBarbosa\ConsoleDbProfiler\Outputs\OutputTypologiesTable;
@@ -70,9 +68,8 @@ class ConsoleDbProfiler
         );
 
         $this->app->terminating(function () use ($profiles, $hints, $typologies) {
-            if ($profiles->hasItems()) {
+            if ($profiles->collection()->isNotEmpty()) {
                 (new OutputProfileTable($profiles))->handle();
-                (new OutputLimitMessage($profiles->getTotalQueries(), h::getConfig('limit')))->handle();
                 (new OutputTotalsTable($profiles))->handle();
                 (new OutputTypologiesTable($typologies))->handle();
                 (new OutputHintsTable($hints))->handle();
@@ -108,13 +105,10 @@ class ConsoleDbProfiler
      */
     protected function log(Query $query, Profile $profiles)
     {
-        /** @var Log $log */
-        $log = $this->app->make(Log::class);
-        $path = h::getConfig('log.options.path');
-
-        if (!$profiles->hasItems()) {
+        $log = new Log(h::getConfig('log.options.path'));
+        if ($profiles->collection()->isEmpty()) {
             if (!h::getConfig('log.options.append')) {
-                File::delete($path);
+                $log->delete();
             }
 
             $date = Carbon::now()->toDateTimeString();
@@ -122,7 +116,7 @@ class ConsoleDbProfiler
             $log->header("[{$date}] Console DB Profiler {$commandName}");
         }
 
-        $log->write($query->getSql());
+        $log->log($query->getSql());
     }
 
     /**
