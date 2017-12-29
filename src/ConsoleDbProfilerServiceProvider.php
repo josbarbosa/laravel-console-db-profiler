@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\ServiceProvider;
-use JosBarbosa\ConsoleDbProfiler\Classes\Log;
-use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 use Symfony\Component\Console\Input\ArgvInput;
 use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
 
@@ -32,7 +28,7 @@ class ConsoleDbProfilerServiceProvider extends ServiceProvider
         ]);
 
         if ($this->isEnvironmentEnabled() && $this->isProfilerEnabled()) {
-            $this->app->make(ConsoleDbProfiler::class)->boot();
+            (new ConsoleDbProfiler($this->app))->boot();
         }
     }
 
@@ -44,21 +40,6 @@ class ConsoleDbProfilerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(h::configPath(), 'console-db-profiler');
-
-        if ($this->isEnvironmentEnabled() && $this->isProfilerEnabled()) {
-            $this->app->bind(ConsoleDbProfiler::class, function () {
-                return new ConsoleDbProfiler($this->app);
-            });
-
-            $this->app->bind(Log::class, function () {
-                $path = h::getConfig('log.options.path');
-                $logger = new Logger('profiler_log');
-                $lineFormatter = (new LineFormatter("%message% %context% %extra%\n", null, true, true));
-                $streamHandler = (new StreamHandler($path))->setFormatter($lineFormatter);
-                $logger->pushHandler($streamHandler);
-                return new Log($logger, $logger::DEBUG);
-            });
-        }
     }
 
     /**

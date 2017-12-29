@@ -21,8 +21,11 @@ class OutputHintsTable extends OutputTable
      */
     public function rows(): array
     {
-        return $this->collector->collection()->transform(function (string $hint) {
-            return [$this->wrapTextInColumn($hint)];
-        })->toArray();
+        return $this->collector
+            ->collection()
+            ->transform(function (string $hint) {
+                return [$this->wrapTextInColumn($hint)];
+            })
+            ->toArray();
     }
 }

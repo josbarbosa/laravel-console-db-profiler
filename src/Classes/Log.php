@@ -1,6 +1,6 @@
 <?php namespace JosBarbosa\ConsoleDbProfiler\Classes;
 
-use Psr\Log\LoggerInterface;
+use Illuminate\Support\Facades\File;
 
 /**
  * Class Log
@@ -9,24 +9,17 @@ use Psr\Log\LoggerInterface;
 class Log
 {
     /**
-     * @var LoggerInterface
+     * @var string
      */
-    protected $logger;
-
-    /**
-     * @var int
-     */
-    protected $level;
+    protected $path;
 
     /**
      * Log constructor.
-     * @param LoggerInterface $logger
-     * @param int $level
+     * @param string $path
      */
-    public function __construct(LoggerInterface $logger, int $level)
+    public function __construct(string $path)
     {
-        $this->logger = $logger;
-        $this->level = $level;
+        $this->path = $path;
     }
 
     /**
@@ -36,17 +29,35 @@ class Log
     {
         $multiplier = 60;
         $separator = str_repeat('-', $multiplier);
-        $this->write($separator);
-        $this->write($title);
-        $this->write($separator);
+        $this->log($separator);
+        $this->log($title);
+        $this->log($separator);
+    }
+
+    public function delete()
+    {
+        if ($this->exists()) {
+            File::delete($this->path);
+        }
     }
 
     /**
      * @param string $message
-     * @param array $context
      */
-    public function write(string $message, array $context = [])
+    public function log(string $message)
     {
-        $this->logger->log($this->level, $message, $context);
+        File::append($this->path, $message . PHP_EOL);
+    }
+
+    /**
+     * @return bool
+     */
+    public function exists(): bool
+    {
+        if (File::exists($this->path)) {
+            return true;
+        }
+
+        return false;
     }
 }

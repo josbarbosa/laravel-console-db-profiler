@@ -1,4 +1,4 @@
-<?php namespace PackageTests\Database;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Database;
 
 use Illuminate\Database\Eloquent\Model;
 

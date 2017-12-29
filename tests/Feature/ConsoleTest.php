@@ -1,4 +1,4 @@
-<?php namespace PackageTests\Feature;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Feature;
 
 use Carbon\Carbon;
 use Illuminate\Database\Events\QueryExecuted;
@@ -6,8 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use JosBarbosa\ConsoleDbProfiler\ConsoleDbProfiler;
-use PackageTests\Database\Test;
-use PackageTests\TestCaseConsole;
+use JosBarbosa\ConsoleDbProfiler\Tests\Database\Test;
+use JosBarbosa\ConsoleDbProfiler\Tests\TestCaseConsole;
 use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
 
 /**

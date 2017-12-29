@@ -1,8 +1,7 @@
-<?php namespace PackageTests\Commands;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use PackageTests\Database\Test;
 
 class Command01 extends Command
 {

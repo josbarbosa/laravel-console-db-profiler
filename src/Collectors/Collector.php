@@ -37,12 +37,4 @@ class Collector implements CollectorInterface
     {
         return $this->collector;
     }
-
-    /**
-     * @return bool
-     */
-    public function hasItems(): bool
-    {
-        return $this->collector->isNotEmpty();
-    }
 }

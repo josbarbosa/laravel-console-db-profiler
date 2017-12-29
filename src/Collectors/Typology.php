@@ -28,7 +28,7 @@ class Typology extends Collector
      */
     public function groupCountTypologies(): Collection
     {
-        return $this->collection()->groupBy('typology')->map(function (Collection $typologies) {
+        return $this->collector->groupBy('typology')->map(function (Collection $typologies) {
             return $typologies->count();
         });
     }

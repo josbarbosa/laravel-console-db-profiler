@@ -1,7 +1,7 @@
-<?php namespace PackageTests;
+<?php namespace JosBarbosa\ConsoleDbProfiler\Tests;
 
 use JosBarbosa\ConsoleDbProfiler\ConsoleDbProfilerServiceProvider;
-use PackageTests\Utilities\TestOutput;
+use JosBarbosa\ConsoleDbProfiler\Tests\Utilities\TestOutput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Mockery as m;
 use JosBarbosa\ConsoleDbProfiler\Helpers\Helper as h;
@@ -45,7 +45,7 @@ class TestCaseConsole extends TestCase
      * @param string $environment
      * @return $this
      */
-    function setEnv(string $environment): self
+    protected function setEnv(string $environment): self
     {
         $this->application->env = $environment;
         return $this;
@@ -55,9 +55,9 @@ class TestCaseConsole extends TestCase
      * @param bool $isRunning
      * @return $this
      */
-    function runningInConsole(bool $isRunning): self
+    protected function runningInConsole(bool $isRunning): self
     {
-        $this->application->shouldReceive('runningInConsole')->times(2)->withNoArgs()->andReturn($isRunning);
+        $this->application->shouldReceive('runningInConsole')->times(1)->withNoArgs()->andReturn($isRunning);
         return $this;
     }
 
@@ -66,7 +66,7 @@ class TestCaseConsole extends TestCase
      * @param $value
      * @return $this
      */
-    function setConfig(string $key, $value): self
+    protected function setConfig(string $key, $value): self
     {
         h::setConfig($key, $value);
         return $this;
@@ -75,7 +75,7 @@ class TestCaseConsole extends TestCase
     /**
      * @return $this
      */
-    function boot(): self
+    protected function boot(): self
     {
         $this->provider->register();
         $this->provider->boot();
