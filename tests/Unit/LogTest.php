@@ -19,7 +19,7 @@ class LogTest extends TestCase
 
         $log->header('Test');
 
-        $log->log('aaa');
+        $log->save('aaa');
 
         $this->assertFileExists($path);
         $this->assertTrue($log->exists());

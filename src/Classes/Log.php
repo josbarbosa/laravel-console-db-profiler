@@ -29,9 +29,9 @@ class Log
     {
         $multiplier = 60;
         $separator = str_repeat('-', $multiplier);
-        $this->log($separator);
-        $this->log($title);
-        $this->log($separator);
+        $this->save($separator);
+        $this->save($title);
+        $this->save($separator);
     }
 
     public function delete()
@@ -44,7 +44,7 @@ class Log
     /**
      * @param string $message
      */
-    public function log(string $message)
+    public function save(string $message)
     {
         File::append($this->path, $message . PHP_EOL);
     }

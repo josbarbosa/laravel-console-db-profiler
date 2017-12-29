@@ -116,7 +116,7 @@ class ConsoleDbProfiler
             $log->header("[{$date}] Console DB Profiler {$commandName}");
         }
 
-        $log->log($query->getSql());
+        $log->save($query->getSql());
     }
 
     /**
