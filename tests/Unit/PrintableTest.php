@@ -38,7 +38,7 @@ class PrintableTest extends TestCase
 
         $methods = [
             'textColorInfo'      => $this->colorInfo,
-            'textColorError'     => $this->colorError,
+            'textColorWarning'     => $this->colorWarning,
             'textColorHighlight' => $this->colorHighlight,
             'textColorOk'        => $this->colorOk,
         ];
@@ -56,7 +56,7 @@ class PrintableTest extends TestCase
     {
         $methods = [
             'info'      => $this->tagInfo,
-            'error'     => $this->tagError,
+            'warning'     => $this->tagWarning,
             'highlight' => $this->tagHighlight,
             'comment'   => $this->tagComment,
         ];

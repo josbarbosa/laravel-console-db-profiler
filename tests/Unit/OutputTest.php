@@ -147,17 +147,17 @@ class OutputTest extends TestCase
             [],
             [
                 $this->textColorOk($this->queryTimeFast),
-                $this->error($this->defaultSql),
+                $this->warning($this->defaultSql),
             ],
             new TableSeparator(),
             [
-                $this->error($this->queryTimeMoreSlow),
+                $this->warning($this->queryTimeMoreSlow),
                 $this->defaultSql . " where name='new'",
             ],
             new TableSeparator(),
             [
-                $this->error($slowQuery),
-                $this->error($this->defaultSql),
+                $this->warning($slowQuery),
+                $this->warning($this->defaultSql),
             ],
         ];
         $this->assertEquals($rowsOutput, (new OutputProfileTable($this->profiles))->rows());
@@ -208,7 +208,7 @@ class OutputTest extends TestCase
                     h::trans('total_time'),
                 ],
                 [
-                    $this->textColorError($profiles->getTotalDuplicates()),
+                    $this->textColorWarning($profiles->getTotalDuplicates()),
                     str_plural(h::trans('duplicate'), $profiles->getTotalDuplicates()) . ' ' . h::trans('n1_problem'),
                 ],
             ],
@@ -251,7 +251,7 @@ class OutputTest extends TestCase
 
         $this->assertEquals(
             [
-                $this->textColorError($duplicates),
+                $this->textColorWarning($duplicates),
                 str_plural(h::trans('duplicate'), $duplicates) . ' ' . h::trans('n1_problem'),
             ],
             $outputTotalsTable->totalDuplicatesRow()
@@ -276,7 +276,7 @@ class OutputTest extends TestCase
 
         $this->assertEquals(
             [
-                $this->textColorError($totalTime),
+                $this->textColorWarning($totalTime),
                 h::trans('total_time'),
             ],
             $outputTotalsTable->totalTimeRow()
@@ -294,7 +294,7 @@ class OutputTest extends TestCase
 
         /** Test with warnings */
         h::setConfig('threshold.total_queries', -1);
-        $this->assertEquals($this->textColorError($totalTime), $outputTotalsTable->coloredThreshold());
+        $this->assertEquals($this->textColorWarning($totalTime), $outputTotalsTable->coloredThreshold());
     }
 
     protected function stub()
