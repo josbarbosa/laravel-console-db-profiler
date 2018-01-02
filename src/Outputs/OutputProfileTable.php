@@ -44,13 +44,13 @@ class OutputProfileTable extends OutputTable
             $timeColumn = $this->textColorOk($time);
 
             if ($time >= h::getConfig('threshold.slow_query')) {
-                $timeColumn = $this->error($time);
+                $timeColumn = $this->warning($time);
             }
 
             $sqlColumn = $this->wrapTextInColumn($query->getSql());
 
             if (h::getConfig('duplicates') && $query->isDuplicate()) {
-                $sqlColumn = $this->error($sqlColumn);
+                $sqlColumn = $this->warning($sqlColumn);
             }
 
             /** @var bool $drawSeparator */

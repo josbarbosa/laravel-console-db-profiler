@@ -35,7 +35,7 @@ class OutputTotalsTable extends OutputTable
         $totalDuplicates = $profiles->getTotalDuplicates();
 
         if ($totalDuplicates) {
-            $colDuplicates = $this->textColorError($totalDuplicates);
+            $colDuplicates = $this->textColorWarning($totalDuplicates);
             $strPlural = str_plural(h::trans('duplicate'), $totalDuplicates);
             $colDuplicatesTitle = $strPlural . ' ' . h::trans('n1_problem');
 
@@ -74,6 +74,6 @@ class OutputTotalsTable extends OutputTable
         $totalTime = $profiles->getTotalTime();
         $threshold = h::getConfig('threshold.total_queries');
 
-        return ($totalTime > $threshold) ? $this->textColorError($totalTime) : $this->textColorOk($totalTime);
+        return ($totalTime > $threshold) ? $this->textColorWarning($totalTime) : $this->textColorOk($totalTime);
     }
 }
