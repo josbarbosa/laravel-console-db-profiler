@@ -23,7 +23,7 @@ trait Printable
     /**
      * @var string
      */
-    protected $colorError = 'red';
+    protected $colorWarning = 'red';
     /**
      * @var string
      */
@@ -39,7 +39,7 @@ trait Printable
     /**
      * @var string
      */
-    protected $tagError = 'error';
+    protected $tagWarning = 'error';
     /**
      * @var string
      */
@@ -79,9 +79,9 @@ trait Printable
      * @param string $text
      * @return string
      */
-    public function textColorError(string $text): string
+    public function textColorWarning(string $text): string
     {
-        return "<fg={$this->colorError}>{$text}</>";
+        return "<fg={$this->colorWarning}>{$text}</>";
     }
 
     /**
@@ -125,9 +125,9 @@ trait Printable
      * @param string $text
      * @return string
      */
-    public function error(string $text): string
+    public function warning(string $text): string
     {
-        return "<{$this->tagError}>{$text}</{$this->tagError}>";
+        return "<{$this->tagWarning}>{$text}</{$this->tagWarning}>";
     }
 
     /**
